@@ -75,6 +75,14 @@ status_summary<- analysis_status_metadata %>%
   mutate(year = as_factor(Year)) %>% 
   ungroup()
 
+# summarize number of datasets available/analyzed
+status_summary_datasets<- analysis_status_metadata %>% 
+  mutate(total_datasets_baleen = sum(record_baleen, na.rm = T),
+         total_datasets_beaked = sum(record_beaked, na.rm = T),
+         n_analyzed_narw = sum(analysis_narw, na.rm = T),
+         n_analyzed_baleen = sum(analysis_baleen, na.rm = T),
+         n_analyzed_beaked = sum(analysis_beaked, na.rm = T))
+
 #--------------------------------------
 
 # Set up data for figure
